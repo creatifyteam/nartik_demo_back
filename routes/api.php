@@ -18,4 +18,4 @@ use App\Http\Controllers\LinkMyDealsCoupon;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('photo', PhotoController::class);
+Route::resource('coupons', LinkMyDealsCoupon::class);

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Traits\ApiResponseTrait;
 
 class LinkMyDealsCoupon extends Controller
 {
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +17,17 @@ class LinkMyDealsCoupon extends Controller
     public function index()
     {
         // get Coupons from Link my Deals
+        // http://feed.linkmydeals.com/getOffers/?API_KEY={{api_key}}&incremental=1&last_extract=1448536485&format=json
+        $response = Http::get('http://feed.linkmydeals.com/getOffers/', [
+            'API_KEY' => '5674ebb6361d0cb5f312b41b50ee1245' ,
+            'incremental' => 1,
+            'last_extract' => 1448536485,
+            'format' => 'json'
+        ]);
+
+        return $this->apiResponse(json_decode($response->body()));
+
+
     }
 
     /**
