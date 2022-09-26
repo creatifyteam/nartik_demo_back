@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarginFinderMaxController;
 use App\Http\Controllers\FinancialDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::resource('coupons', LinkMyDealsCoupon::class);
 Route::post('/financial-details', [FinancialDetailController::class,'index']);
+
+
+Route::post('search',  [BarginFinderMaxController::class,'index']);
+Route::get('autocomplete',  [BarginFinderMaxController::class,'airports']);
+
+Route::post('search/filter',  [BarginFinderMaxController::class,'filter']);
+
+Route::get('paginate-results',  [BarginFinderMaxController::class,'paginate']);
+
+Route::get('/flights/{tagId}/{tripType}',  [BarginFinderMaxController::class,'show']);
