@@ -797,7 +797,7 @@ class BarginFinderMaxController extends Controller
 
             ],
             [
-                "Fees" => StripeInit::stripePrice(),
+                "Fees" =>50,
             ]
         ];
         return $passengersData;

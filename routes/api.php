@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarginFinderMaxController;
 use App\Http\Controllers\FinancialDetailController;
+use App\Http\Controllers\GeoLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkMyDealsCoupon;
@@ -32,3 +33,5 @@ Route::post('search/filter',  [BarginFinderMaxController::class,'filter']);
 Route::get('paginate-results',  [BarginFinderMaxController::class,'paginate']);
 
 Route::get('/flights/{tagId}/{tripType}',  [BarginFinderMaxController::class,'show']);
+
+Route::get('geo-location',  [GeoLocationController::class,'geo_location']);
